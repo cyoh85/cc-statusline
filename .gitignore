@@ -19,3 +19,7 @@ yarn-error.log*
 
 # Logs
 *.log
+
+# Private: Claude Code project brief and launch planning (not for public repo)
+CLAUDE.md
+.launch/
