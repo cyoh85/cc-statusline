@@ -51,12 +51,13 @@ process.stdin.on('end', () => {
       const filled = Math.floor(usedPct / 10);
       const filledBar = '▇'.repeat(filled);
       const emptyBar = '▇'.repeat(10 - filled);
-      let bright, dim;
-      if (usedPct < 50) { bright = '\x1b[38;5;110m'; dim = '\x1b[38;5;67m'; }
-      else if (usedPct < 65) { bright = '\x1b[38;5;108m'; dim = '\x1b[38;5;65m'; }
-      else if (usedPct < 80) { bright = '\x1b[38;5;173m'; dim = '\x1b[38;5;130m'; }
-      else { bright = '\x1b[38;5;174m'; dim = '\x1b[38;5;131m'; }
-      return `${bright}${filledBar}\x1b[0m${dim}${emptyBar}\x1b[0m ${bright}${usedPct}%\x1b[0m`;
+      const empty = '\x1b[38;5;238m';
+      let bright;
+      if (usedPct < 50) bright = '\x1b[38;5;110m';
+      else if (usedPct < 65) bright = '\x1b[38;5;108m';
+      else if (usedPct < 80) bright = '\x1b[38;5;173m';
+      else bright = '\x1b[38;5;174m';
+      return `${bright}${filledBar}\x1b[0m${empty}${emptyBar}\x1b[0m ${bright}${usedPct}%\x1b[0m`;
     }
 
     function formatResetTime(unixSec) {
